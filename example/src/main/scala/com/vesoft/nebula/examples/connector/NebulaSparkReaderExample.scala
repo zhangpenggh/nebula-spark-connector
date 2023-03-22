@@ -40,7 +40,6 @@ object NebulaSparkReaderExample {
   }
 
   def readVertex(spark: SparkSession): Unit = {
-    LOG.info("start to read nebula vertices")
     val config =
       NebulaConnectionConfig
         .builder()
@@ -52,7 +51,7 @@ object NebulaSparkReaderExample {
       .withSpace("test")
       .withLabel("person")
       .withNoColumn(false)
-      .withReturnCols(List("birthday"))
+      .withReturnCols(List())
       .withLimit(10)
       .withPartitionNum(10)
       .build()
@@ -63,8 +62,6 @@ object NebulaSparkReaderExample {
   }
 
   def readEdges(spark: SparkSession): Unit = {
-    LOG.info("start to read nebula edges")
-
     val config =
       NebulaConnectionConfig
         .builder()
@@ -77,7 +74,7 @@ object NebulaSparkReaderExample {
       .withSpace("test")
       .withLabel("knows")
       .withNoColumn(false)
-      .withReturnCols(List("degree"))
+      .withReturnCols(List())
       .withLimit(10)
       .withPartitionNum(10)
       .build()
